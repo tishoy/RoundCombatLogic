@@ -10,10 +10,8 @@ class AttackSkill {
 	private $buff2 = null;
 
 	public function __construct($id, $caster){
-		$def = GameDef::getGameDefById(GameDef::SKILL_BASE, $id);
-		if(empty($def)){
-			throwGameException('skill is not exist. id:' . $id, StatusCode::APP_USER_ERROR, __METHOD__);
-		}
+		//TODO 从表中获取技能配置
+		
 		
 		$this->_id = $id;
 		$this->_caster = $caster;

@@ -4,7 +4,7 @@
  * Date: 2016/3/4
  * Time: 12:48
  */
-class TeamInBattle {
+class Team {
     //属于我方队伍
     private $_isPlayerTeam;
     //玩家等级

@@ -11,10 +11,7 @@ class Buff {
 	public $_tillRounds = 0;
 
 	public function __construct($id){
-		$def = GameDef::getGameDefById(GameDef::BUFF_BASE, $id);
-		if(empty($def)){
-			throwGameException('buff is not exist. id:' . $id, StatusCode::APP_USER_ERROR, __METHOD__);
-		}
+		//TODO 获取Buff配置
 		
 		$this->_id = $id;
 		$this->_def = $def;

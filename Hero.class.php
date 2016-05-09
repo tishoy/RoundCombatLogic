@@ -4,7 +4,7 @@
  * Date: 2016/3/3
  * Time: 10:26
  */
-class HeroInBattle {
+class Hero {
     //英雄卡牌ID
     private $_card_Id = 0;
     // 英雄战场ID
@@ -60,23 +60,6 @@ class HeroInBattle {
         $this->_belong_team = $isPlayerTeam;
 
         $this->loadData();
-//        //测试用
-//        $this->_current_mpMax = 10;
-//        $this->_current_mp = 5;
-//
-//        $this->_status = array(
-//            BattleEngine::STATUS_TYPE_NORMAL => 1,
-//            BattleEngine::STATUS_TYPE_SILENT => 0,
-//            BattleEngine::STATUS_TYPE_SLEEP => 0,
-//            BattleEngine::STATUS_TYPE_DIZZY => 0
-//        );
-//        $this->resetBuffs();
-//
-////		$skillDef = GameDef::getGameDefById(GameDef::SKILL_BASE, $card['SkillId']);
-//        $cardDef = GameDef::getGameDefById(GameDef::CARD_BASE, $this->_card_Id);
-//        $this->_skill = new AttackSkill($cardDef['skillId'], $this->_hero_battleId);
-//        //技能等级
-//        $this->_bigSkill = new AttackSkill($cardDef['skillId'], $this->_hero_battleId);
     }
 
     //----------------------------------------------初始化部分---------------------------------------------------------
@@ -84,11 +67,7 @@ class HeroInBattle {
      * 初始化战斗数值
      */
     private function loadData(){
-        $cardDef = GameDef::getGameDefById(GameDef::CARD_BASE, $this->_card_Id);
-
-        if(empty($cardDef)){
-            throwGameException('not have this card def. id:' . $this->_card_Id, StatusCode::SERVICES_EXEC_ERROR, __METHOD__);
-        }
+        //TODO  获取英雄配置
 
         $this->_current_hp = $this->_attrs['HEALTH_POINT'];
         $this->_mpMax = $cardDef['moraleMax'];
