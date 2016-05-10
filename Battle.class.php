@@ -142,13 +142,14 @@ class Battle
     public function startBattle()
     {
         $this->prepareBattle();
-        if ($this->_type == Battle::TYPE_ARENA) {
-            $this->petReleaseBuff(BattleHelper::BATTLE_TEAM_US);
-            $this->petReleaseBuff(BattleHelper::BATTLE_TEAM_ENEMY);
-        }
+        // 暂时没有宠物
+        // if ($this->_type == Battle::TYPE_ARENA) {
+        //     $this->petReleaseBuff(BattleHelper::BATTLE_TEAM_US);
+        //     $this->petReleaseBuff(BattleHelper::BATTLE_TEAM_ENEMY);
+        // }
         //双方阵容中还有英雄存活 否则战斗结束
         while (!$this->_handle_end && $this->_alive_number > 0 && $this->_my_team->getAliveNum() > 0 && $this->_enemy_team->getAliveNum() > 0) {
-            print_r('<br/>' . '一次结果' . $this->_alive_number . '我方' . $this->_my_team->getAliveNum() . '敌方' . $this->_enemy_team->getAliveNum() . "<br />");
+            
             $this->runBattle();
         }
         $this->_is_end = true;
@@ -180,11 +181,7 @@ class Battle
             throwGameException("战斗英雄列表为空");
         }
         $actor = $this->getActor();            //获取本次行动者
-        if ($actor->getBelongTeam()) {
-            print_r("我方英雄" . $actor->getBaseId() . "<br />");
-        } else {
-            print_r("敌方英雄" . $actor->getBaseId() . "<br />");
-        }
+        
         $this->excuteAction($actor);
         $this->_actor_index++;
     }
@@ -206,9 +203,9 @@ class Battle
         }
         $hero = $this->_hero_list[$this->_actor_index];
 
-        if ($this->_actor_index > $this->_alive_number) {
-            throwGameException("行动者序列出错");
-        }
+        // if ($this->_actor_index > $this->_alive_number) {
+        //     throwGameException("行动者序列出错");
+        // }
         if ($hero->isStautsDizzy() > 0 || $hero->isStautsSleep() > 0) {    //英雄状态不出手
             $this->_actor_index++;
             return $this->getActor();
@@ -909,39 +906,6 @@ class Battle
         return self::$target_data;
     }
 
-    /**
-     * @see 关卡战斗
-     */
-    public function validateMissionBattle($report)
-    {
-        $this->mine = new Formation(Unit::TYPE_USER, self::$mine_data);
-
-        foreach (self::$target_data as $subMission => $monsterIds) {
-            $this->target = new Formation(Unit::TYPE_MONSTER, $monsterIds);
-
-            if (!isset($report[$subMission])) {
-                throwGameException('report error.', StatusCode::SERVICES_EXEC_ERROR, __METHOD__);
-            }
-
-            foreach ($report[$subMission] as $round => $rd) {
-                //{stat:{},  action:{} }  hp,morle,holdstatus
-
-
-            }
-
-
-        }
-
-    }
-
-    /**
-     * @see 竞技场战斗
-     */
-    public function validateArenaBattle($report)
-    {
-        $this->mine = new Formation(Unit::TYPE_USER, self::$mine_data);
-        $this->target = new Formation(Unit::TYPE_USER, self::$target_data);
-    }
 }
 
 ?>

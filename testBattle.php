@@ -11,10 +11,6 @@ require_once 'Team.php';
 require_once 'AttackSkill.class.php';
 require_once 'Buff.class.php';
 
-//require_once '../../common/common.func.php';
-//require_once '../definition/GameDef.class.php';
-//require_once '../../adapter/MemAdapter.php';
-//require_once '../../GameConfig.inc.php';
 $enemyTeam = array(
     "5281" => array("BASE_ID" => 5281, "LEVEL" => 76, "ATK_POINT" => 45577.9, "ATK_ADD" => 1, "DEF_POINT" => 25602, "DEF_ADD" => 1, "HEALTH_POINT" => 128716.5, "HP_ADD" => 1, "RECU_POINT" => 20368.55, "RECU_ADD" => 1, "SPEED" => 359, "SPEED_ADD" => 1, "CRITICAL_RATE" => 0, "CRITICAL_DMG_ADD" => 1.5, "BATTLE_RATING" => 106296, "HIT_POINT" => 1.15, "SIDESTEP" => 0.75, "AG_CRITICAL" => 0.8, "ABS_DMG" => 0, "DMG_REDUCE" => 0.7, "HATRED_POINT" => 100),
     "5282" => array("BASE_ID" => 5433, "LEVEL" => 84, "ATK_POINT" => 56352.25, "ATK_ADD" => 1, "DEF_POINT" => 25216, "DEF_ADD" => 1, "HEALTH_POINT" => 136598.65, "HP_ADD" => 1, "RECU_POINT" => 23102.93, "RECU_ADD" => 1, "SPEED" => 328, "SPEED_ADD" => 1, "CRITICAL_RATE" => 0.651, "CRITICAL_DMG_ADD" => 2.09, "BATTLE_RATING" => 118863, "HIT_POINT" => 1.25, "SIDESTEP" => 0.4, "AG_CRITICAL" => 0.45, "ABS_DMG" => 0, "DMG_REDUCE" => 0.65, "HATRED_POINT" => 100),
